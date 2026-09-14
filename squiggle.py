@@ -33,13 +33,13 @@ class DrawingApp:
         self.color_button.pack(side=tk.LEFT)
         
         # Brush size slider
-        self.size_slider = tk.Scale(self.controls_frame, from_=1, to=10, orient=tk.HORIZONTAL, label="Brush Size", command=self.change_brush_size)
+        self.size_slider = tk.Scale(self.controls_frame, from_=1, to=25, orient=tk.HORIZONTAL, label="Brush Size", command=self.change_brush_size)
         self.size_slider.set(self.brush_size)
         self.size_slider.pack(side=tk.LEFT)
 
     def paint(self, event):
-        x1, y1 = (event.x - self.brush_size), (event.y - self.brush_size)
-        x2, y2 = (event.x + self.brush_size), (event.y + self.brush_size)
+        x1, y1 = (event.x - self.brush_size/2), (event.y - self.brush_size/2)
+        x2, y2 = (event.x + self.brush_size/2), (event.y + self.brush_size/2)
         self.canvas.create_oval(x1, y1, x2, y2, fill=self.color, outline=self.color)
 
     def clear_canvas(self):
