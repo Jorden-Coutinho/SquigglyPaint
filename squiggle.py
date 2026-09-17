@@ -18,8 +18,7 @@ class DrawingApp:
         
         self.canvas.bind("<B1-Motion>", self.paint)
         self.canvas.bind("<Button-1>", self.paint)
-        self.canvas.bind("<Shift-Button-1>", self.start_line)
-        self.canvas.bind("<Shift-ButtonRelease-1>", self.end_line)
+
         
         self.controls_frame = tk.Frame(root)
         self.controls_frame.pack()
@@ -55,12 +54,7 @@ class DrawingApp:
         self.bg_color = colorchooser.askcolor(color=self.bg_color)[1]
         self.canvas.config(bg=self.bg_color)
 
-    def start_line(self,event):
-        self.linex1, self.liney1 = (event.x), (event.y)
-
-    def end_line(self,event):
-        x2, y2 = (event.x), (event.y)
-        self.canvas.create_line(self.linex1,self.liney1,x2,y2,width=self.brush_size,fill=self.color)
+    
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -69,9 +63,10 @@ if __name__ == "__main__":
 
 
 '''Upcoming changes: 
-                     2. Draw line (smooth lines button)
+                     2. Draw line (smooth lines button) - Added draw line, need to assign it to a button now.
                      3. Undo - Redo Button
                      ~. Squiggly Animation on everything
+                     ~. Need to organize the UI
                      ~. Host on netlify, vercel
                      4. Layers
                      5. Import Image
